@@ -49,3 +49,24 @@ class UserInfo(models.Model):
 class UserInfo2(models.Model):
 
     title = models.CharField(max_length=5)
+
+
+class Topping(models.Model):
+
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class Pizza(models.Model):
+
+    name = models.CharField(max_length=50)
+
+    toppings = models.ManyToManyField(
+        Topping,
+        related_name='pizza'
+    )
+
+    def __str__(self):
+        return self.name
